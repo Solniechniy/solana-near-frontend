@@ -1,0 +1,104 @@
+.card {
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  width: 690px;
+  min-height: 100px;
+  background-color: white;
+}
+
+.title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140.38%;
+  color: #131313;
+}
+
+.description {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+
+
+  color: #676C73;
+}
+
+.connectButton {
+  width: 240px;
+  max-width: 240px;
+  height: 48px;
+  background: #3C75E3;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.sendButton{
+  width: 240px;
+  max-width: 240px;
+  height: 48px;
+  background: #3C75E3;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  border: none;
+}
+
+.sendButton:disabled{
+  cursor: not-allowed;
+  background-color: #8E939A;
+}
+
+.input {
+  border: 1px solid #3C75E3;
+  border-radius: 0.5rem;
+  height: 3rem;
+  font-size: 1rem;
+  color: black;
+  padding: 0 1rem;
+  text-transform: uppercase;
+  background-color: unset;
+  transition: box-shadow 0.2s, border 0.2s;
+  flex: 2;
+}
+
+.input:disabled {
+    cursor: not-allowed;
+}
+
+.input:focus-within {
+    border: 1px solid #3C75E3;
+    box-shadow: 0 0 0 3px #3c74e386;
+}
+
+.input:hover{
+  border: 1px solid #3C75E3;
+  box-shadow: 0 0 0 3px #3c74e386;
+}
+
+.input::placeholder {
+    color: black;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: between;
+  gap: 1rem;
+}

@@ -1,0 +1,33 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background-color: #131313;
+  background-image: url('../public/background.svg');
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center 5.25rem;
+  background-repeat: no-repeat;
+}
+
+.AppHeader {
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 50px;
+  color: white;
+  padding: 0 40px;
+  flex-wrap: wrap;
+}
+
+.AppBody{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
