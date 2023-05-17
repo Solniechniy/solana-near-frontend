@@ -73,7 +73,6 @@
   font-size: 1rem;
   color: black;
   padding: 0 1rem;
-  text-transform: uppercase;
   background-color: unset;
   transition: box-shadow 0.2s, border 0.2s;
   flex: 2;
