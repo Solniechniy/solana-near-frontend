@@ -14,6 +14,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     return [
       new walletAdapterWallets.PhantomWalletAdapter(),
       new walletAdapterWallets.SolflareWalletAdapter(),
+      new walletAdapterWallets.BackpackWalletAdapter(),
     ]
   }, [])
 

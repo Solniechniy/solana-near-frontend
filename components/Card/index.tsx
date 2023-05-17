@@ -24,27 +24,29 @@ export default function Card() {
   const [solanaPDAAddress, setSolanaPDAAddress] = useState<string | null>(null);
 
 
-  
-  useEffect(()=>{
-    const loadUserData = async () =>{
-      if(!wallet?.publicKey || !program){ 
-        setNearAddress('')
-        return
-      };
+  const loadUserData = useCallback(async () =>{
+    if(!wallet?.publicKey){ 
+      setNearAddress('')
+      return
+    };
+    try {
       const [userDataAccount] = anchor.web3.PublicKey.findProgramAddressSync(
         [Buffer.from("user_data"), wallet.publicKey.toBytes()],
         new anchor.web3.PublicKey(PROGRAM_ID)
       );
-
+        
       const data = await program.account.userData.fetch(userDataAccount.toString());
       if(!data) return
       const nearAccount = new TextDecoder().decode(Uint8Array.from(data.nearAddress));
       setNearAddress(nearAccount);
       setSolanaPDAAddress(userDataAccount.toString());
-    } 
-    loadUserData();
+    }
+    catch(e){
+      console.log('user not found', e)
+    }
+  } ,[program, wallet?.publicKey])
 
-  },[wallet?.publicKey, program, program?.account?.userData])
+  useEffect(() => { loadUserData() },[loadUserData])
 
 
   useEffect(() => {
@@ -76,9 +78,7 @@ export default function Card() {
     const uint8array = new Uint8Array(padBuff.buffer, padBuff.byteOffset, padBuff.length / padBuff.BYTES_PER_ELEMENT);
     const args = Array.from(uint8array);
 
-    console.log(args, Number(userDataBump.toString()))
-
-    const sig = await program.methods
+    await program.methods
       .createUserData(args, Number(userDataBump.toString()))
       .accounts({
         signer: wallet.publicKey,
@@ -86,7 +86,8 @@ export default function Card() {
         systemProgram: anchor.web3.SystemProgram.programId,
       })
       .rpc()
-  }, [program])
+    await loadUserData()
+  }, [program,nearAddress, wallet?.publicKey, loadUserData])
 
   return <div className={styles.card}>
     <h1 className={styles.title}>OnMachina refund program</h1>
