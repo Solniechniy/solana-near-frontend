@@ -72,7 +72,7 @@ export default function Card() {
       [Buffer.from("user_data"), wallet.publicKey.toBytes()],
       new anchor.web3.PublicKey(PROGRAM_ID)
     );
-   
+    if(!nearAddress) return;
     const padBuff = Buffer.concat([Buffer.from(nearAddress), Buffer.alloc(64 - wallet.publicKey.toBuffer().length)], 64);
 
     const uint8array = new Uint8Array(padBuff.buffer, padBuff.byteOffset, padBuff.length / padBuff.BYTES_PER_ELEMENT);
